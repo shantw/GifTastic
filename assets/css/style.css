@@ -1,0 +1,28 @@
+
+#inputForm{
+	margin-bottom: 20px;
+	
+}
+
+#sportsName {
+ width: 300px;
+}
+
+#labelName{
+	margin-top: 20px;
+	font-style: strong;
+}
+
+button {
+	width: 95px;
+	height: 30px;
+	margin-right: 20px;
+	background: #008080;
+	color: black;
+}
+
+.gif{
+	margin-top: 20px;
+	max-height: 200px;
+	max-width: 300px;
+}
