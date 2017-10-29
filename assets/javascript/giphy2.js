@@ -40,12 +40,22 @@ queryURL     = queryURL + theme;
       })
       // after the https is done do something
       .done(function(response) {
+    var x =1;
+    for (j=1; (j < 5 && x < response.data.length) ; j++){
+       var row = $("<div>");
+	   $(row).addClass("row");
+	   $(row).attr("id","row"+"j");
 
-       for (var i = 1; (i < response.data.length); i++) {
-	       var imageUrl = response.data[i].images.downsized_still.url;
-	       var imageUrlAnimate = response.data[i].images.fixed_height.url;
-
-	        var sportsRating = $("<h4>" + "Rating : " + response.data[i].rating +"</h4>");
+       for (var i = 1; (x < response.data.length && i < 5); i++) {
+	       var imageUrl = response.data[x].images.downsized_still.url;
+	       var imageUrlAnimate = response.data[x].images.fixed_height.url;
+	      // console.log(response);
+	        var col= $("<div>");
+	        //	col.style.whiteSpace="nowrap";
+	        $(col).addClass("col-xs-3 col-md-3");
+	        $(col).attr("id","col"+i);
+	         //console.log($(col).attr("id"));
+	        var sportsRating = $("<h4>" + "Rating : " + response.data[x].rating +"</h4>");
 	        $(sportsRating).addClass("rating");
 	        var sportsImage = $("<img>");
 	        $(sportsImage).attr("src", imageUrl);
@@ -54,11 +64,18 @@ queryURL     = queryURL + theme;
 	        $(sportsImage).attr("data-still", imageUrl);
 	        $(sportsImage).attr("data-state","still");
 	        $(sportsImage).addClass("gif");
-	        $("#images").append(sportsRating);
-	        $("#images").append(sportsImage);
-	              
+	       // $("#images").append(sportsRating);
+	        //$("#images").append(sportsImage);
+	        //console.log($(col));
+	        $(col).append(sportsRating);
+	        $(col).append(sportsImage);
+	        $(row).append(col);
+	        x++;
+	       
 	    }
-
+	    
+	     $("#images").append(row);
+	  }
       });
 
 });
