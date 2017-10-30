@@ -5,7 +5,7 @@
 }
 
 #submitBtn {
-	margin-left: 20px;
+	margin-left: 50px;
 	width: 80px; 
 	color: #008080;
 }
@@ -14,8 +14,13 @@
  width: 300px;
 }
 
-#labelName {
-	margin-top: 20px;
+
+#maxLimit {
+ width: 70px;
+}
+
+#labelName, #maxResults {
+	margin-bottom: 20px;
 	font-weight: bold;
 }
 
@@ -29,13 +34,17 @@ button {
 }
 
 .gif{
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-right: 10px;
 	height: 200px;
-	width: 330px;
-	/*float: left;*/
+	width: 320px;
+	//float: left;
 }
 
 .rating {
-	/*float: top; */
+	/*float: left;*/
+}
+
+.divClass{
+ float: left;
 }

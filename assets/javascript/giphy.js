@@ -1,8 +1,9 @@
 var arrSports = ["NBA","Word Cup","Baseball","UFC"];
-//var url       ="https://api.giphy.com/v1/gifs/search?api_key=YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g&q=NBA&limit=25&offset=0&rating=G&lang=en"
-var apiKey    = "YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g";
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g&limit=16";
+//var apiKey    = "YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g";
+var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g&limit=";
+var limit = 10;
 
+$("#maxLimit").val(limit);
 for (i=0; i < arrSports.length;i++){
 
  var newBtn = $("<button>"+  arrSports[i] +"</button>");
@@ -31,8 +32,11 @@ $(document).on("click", ".sportsBtn", function(e){
 e.preventDefault();
 $("#images").empty();
 
+limit = $("#maxLimit").val();
 var theme    = "&q=" + $(this).attr("data-sports");
-queryURL     = queryURL + theme;
+queryURL     = queryURL+ limit + theme;
+
+
       // Making an http request using ajax
       $.ajax({
         url: queryURL,
@@ -41,10 +45,13 @@ queryURL     = queryURL + theme;
       // after the https is done do something
       .done(function(response) {
 
-       for (var i = 1; (i < response.data.length); i++) {
+       for (var i = 0; (i < response.data.length); i++) {
 	       var imageUrl = response.data[i].images.downsized_still.url;
 	       var imageUrlAnimate = response.data[i].images.fixed_height.url;
 
+	       var newDiv = $("<div>");
+	       $(newDiv).attr("id","div"+i);
+	       $(newDiv).addClass("divClass");
 	        var sportsRating = $("<h4>" + "Rating : " + response.data[i].rating +"</h4>");
 	        $(sportsRating).addClass("rating");
 	        var sportsImage = $("<img>");
@@ -54,15 +61,15 @@ queryURL     = queryURL + theme;
 	        $(sportsImage).attr("data-still", imageUrl);
 	        $(sportsImage).attr("data-state","still");
 	        $(sportsImage).addClass("gif");
-	        $("#images").append(sportsRating);
-	        $("#images").append(sportsImage);
-	              
+	       // $("#images").append(sportsRating);
+	        //$("#images").append(sportsImage);	 
+	        $(newDiv).append(sportsRating);
+	        $(newDiv).append(sportsImage);	
+	        $("#images").append(newDiv);             
 	    }
-
-      });
+    });
 
 });
-
 
 $(document).on("click", ".gif", function(e){
 
