@@ -3,7 +3,7 @@ var arrSports = ["NBA","Word Cup","Baseball","UFC"];
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YnhlYwxxNFYGZ57wVPP3cfFpv672Ts1g&limit=";
 var limit = 10;
 
-$("#maxLimit").val(limit);
+//$("#maxLimit").val(limit);
 for (i=0; i < arrSports.length;i++){
 
  var newBtn = $("<button>"+  arrSports[i] +"</button>");
@@ -27,12 +27,13 @@ if ( !(document.getElementById("sportsName").value === "")) {
 
 });
 
+
 $(document).on("click", ".sportsBtn", function(e){
 
 e.preventDefault();
 $("#images").empty();
 
-limit = $("#maxLimit").val();
+//limit = $("#maxLimit").val();
 var theme    = "&q=" + $(this).attr("data-sports");
 queryURL     = queryURL+ limit + theme;
 
